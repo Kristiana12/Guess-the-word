@@ -6,6 +6,7 @@ body {
   font-family: maxular, serif;
   background-color: #faf9f9;
   color: #393b45;
+  padding: 0.5rem;
 }
 
 header {
@@ -20,6 +21,7 @@ main {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 /* Field where the missing word will appear */
@@ -65,23 +67,33 @@ li.letter span.show {
 /* Lifes svg */
 .lifes {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0 0.5rem;
+  gap: 1rem 0.5rem;
   margin-bottom: 2.5rem;
 }
 
-/* Error message */
-.message-error {
+/*Message */
+.message {
   margin-bottom: 2rem;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
 }
 
-.message-error.show {
+.message.show {
   opacity: 1;
   visibility: visible;
+}
+
+.message.lose {
+  color: crimson;
+  font-size: 1.8rem;
+}
+.message.win {
+  color: #1e7c71;
+  font-size: 1.8rem;
 }
 
 /* Buttons */
