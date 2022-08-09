@@ -100,7 +100,7 @@ const init = () => {
       }
     }
     //If unique characters are equal to the used ones : WIN THE GAME
-    if (rightLettersUsed.size === lettersUnique.sized) {
+    if (rightLettersUsed.size === lettersUnique.size) {
       message.innerHTML = `Congratulations you won!`;
       message.classList.add('win');
       isPlaying = false;
