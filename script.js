@@ -135,6 +135,7 @@ const reset = () => {
 resetBtn.addEventListener('click', reset);
 
 // INITIAL SOLUTION *with new Set()*
+//(a bug when pressing the reset button that still needs to be fixed)
 
 // let isPlaying;
 // let totalHeartnumbers;
