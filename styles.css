@@ -39,6 +39,9 @@ ul {
   background-color: #434754;
   margin-bottom: 2rem;
   gap: 0 0.5rem;
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 5px;
 }
 
 li.letter {
@@ -81,14 +84,21 @@ li.letter span.show {
 }
 
 /*Message */
-.message {
-  margin-bottom: 2rem;
+.message,
+.bottom-message {
+  margin-bottom: 1rem;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
 }
 
-.message.show {
+.bottom-message {
+  color: rgb(8, 87, 8);
+  font-weight: bold;
+}
+
+.message.show,
+.bottom-message.show {
   opacity: 1;
   visibility: visible;
 }

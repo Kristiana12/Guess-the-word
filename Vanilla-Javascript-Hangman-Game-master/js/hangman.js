@@ -19,11 +19,38 @@ let answer = '';
 let maxWrong = 6;
 let mistakes = 0;
 let guessed = [];
-let wordStatus = null;
+// let wordStatus = null;
+let wordStatus;
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
 
-//Get random word fromm the array
+//Generate the buttons via javascript
+const generateButtons = () => {
+  let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'
+    .split('')
+    .map(
+      (letter) =>
+        `<button
+        class="btn btn-lg btn-primary m-2"
+        id='` +
+        letter +
+        `'
+         onClick="handleGuess('` +
+        letter +
+        `')
+        "
+      >
+          ` +
+        letter +
+        `
+      </button>`
+    )
+    .join('');
+
+  document.getElementById('keyboard').innerHTML = buttonsHTML;
+};
+
+//Get random word from the array
 function randomWord() {
   answer =
     programming_languages[
@@ -60,37 +87,11 @@ const checkIfGameLost = () => {
   }
 };
 
-//Generate the buttons via javascript
-const generateButtons = () => {
-  let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'
-    .split('')
-    .map(
-      (letter) =>
-        `<button
-        class="btn btn-lg btn-primary m-2"
-        id='` +
-        letter +
-        `'
-         onClick="handleGuess('` +
-        letter +
-        `')
-        " 
-      >
-          ` +
-        letter +
-        ` 
-      </button>`
-    )
-    .join('');
-
-  document.getElementById('keyboard').innerHTML = buttonsHTML;
-};
-
 //Checks each letter if it exists if not _
 function guessWord() {
   wordStatus = answer
     .split('')
-    //>= is used to get a true of false value [index >= 0]
+    // //>= is used to get a true of false value [index >= 0]
     .map((letter) => (guessed.indexOf(letter) >= 0 ? letter : ' _ '))
     .join('');
 
@@ -101,7 +102,6 @@ function guessWord() {
 const handleGuess = (chosenLetter) => {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
-
   if (answer.indexOf(chosenLetter) >= 0) {
     guessWord();
     checkIfGameWon();
@@ -110,6 +110,7 @@ const handleGuess = (chosenLetter) => {
     updateMistakes();
     checkIfGameLost();
     updateHangmanPicture();
+    console.log(answer.indexOf(chosenLetter));
   }
 };
 
@@ -117,7 +118,6 @@ const reset = () => {
   mistakes = 0;
   guessed = [];
   document.getElementById('hangmanPic').src = './images/0.jpg';
-
   randomWord();
   guessWord();
   updateMistakes();
@@ -127,5 +127,3 @@ const reset = () => {
 generateButtons();
 randomWord();
 guessWord();
-
-console.log(guessed);
